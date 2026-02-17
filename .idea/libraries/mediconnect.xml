@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mediconnect">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/new/mediconnect.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0f172a;
+    color: #e2e8f0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-track {
+  @apply dark:bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+html.dark .glass-effect {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.shadow-lg-custom {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth dark mode transitions */
+* {
+  @apply transition-colors duration-300;
+}
+
+/* Override toast styles for dark mode */
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Input focus states in dark mode */
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+  @apply ring-2 ring-cyan-400;
+}
+
+/* Button hover states in dark mode */
+html.dark button:hover {
+  @apply transition-all duration-200;
+}

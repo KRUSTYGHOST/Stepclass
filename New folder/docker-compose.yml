@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://mediconnect:password@db:5432/mediconnect
+      - SECRET_KEY=${SECRET_KEY:-change-me-in-production}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY:-}
+      - FROM_EMAIL=${FROM_EMAIL:-noreply@mediconnect.com}
+      - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID:-}
+      - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN:-}
+      - TWILIO_PHONE_NUMBER=${TWILIO_PHONE_NUMBER:-}
+    volumes:
+      - ./backend:/app
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=mediconnect
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mediconnect
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
