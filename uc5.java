@@ -16,3 +16,10 @@ public class uc5 {
         }
     }
 }
+/*Create separate methods to build patterns for O, P, and S using String.join().
+
+At array declaration, call these methods to populate the banner lines in order.
+
+Maintain the 7-line, 9-character width alignment for each letter.
+
+Use a loop (enhanced for loop preferred) to print each line of the banner.*/

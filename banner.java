@@ -10,3 +10,4 @@ class banner {
         System.out.println("   ***   "+" "+"      ***      "+"   **        ");
     }
 }
+//print the same using string.join() method
